@@ -1,21 +1,29 @@
-package com.alexalvesfd.algaworks.model;
+package com.alexalvesfd.algaworks.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Cidade {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CIDADE_ID")
 	private Long id;
 	
-	@Column(name = "NOME")
+	@Column(name = "nome")
 	private String nome;
+	
+	@ManyToOne 
+	@JoinColumn(name = "estado_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Estado estado;
 
 	public Cidade() {
 
@@ -37,6 +45,12 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	
+	public Estado getEstado() {
+		return estado;
+	}
 
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
 }

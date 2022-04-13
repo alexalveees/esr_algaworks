@@ -8,9 +8,7 @@ public class AlgaworksApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AlgaworksApplication.class, args);
-		
-	
-		
+
 	}
 
 }

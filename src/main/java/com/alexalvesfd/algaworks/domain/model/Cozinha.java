@@ -1,25 +1,33 @@
-package com.alexalvesfd.algaworks.model;
+package com.alexalvesfd.algaworks.domain.model;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Cozinha {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "COZINHA_ID")
 	private Long id;
 	
-	@Column(name = "NOME")
+	@Column(nullable = false)
 	private String nome;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "cozinha")
+	private List<Restaurante> restaurantes = new ArrayList<>();
+	
 	public Cozinha() {
+		
 	}
 
 	public Long getId() {
@@ -38,26 +46,14 @@ public class Cozinha {
 		this.nome = nome;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public List<Restaurante> getRestaurantes() {
+		return restaurantes;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cozinha other = (Cozinha) obj;
-		return Objects.equals(id, other.id);
+	public void setRestaurantes(List<Restaurante> restaurantes) {
+		this.restaurantes = restaurantes;
 	}
-
-	@Override
-	public String toString() {
-		return "Cozinha [id=" + id + ", nome=" + nome + "]";
-	}	
-
+	
+	
+	
 }

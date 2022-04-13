@@ -1,4 +1,4 @@
-package com.alexalvesfd.algaworks.model;
+package com.alexalvesfd.algaworks.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +11,9 @@ public class FormaPagamento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_FORMA_PAGAMENTO")
 	private Long id;
 	
-	@Column(name = "DESCRICAO")
+	@Column(name = "descricao")
 	private String descricao;
 	
 	public FormaPagamento() {

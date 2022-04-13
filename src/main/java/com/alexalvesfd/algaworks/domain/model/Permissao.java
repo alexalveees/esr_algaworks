@@ -1,23 +1,24 @@
-package com.alexalvesfd.algaworks.model;
+package com.alexalvesfd.algaworks.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "permissao")
 public class Permissao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_PERMISSAO")
 	private Long id;
 	
-	@Column(name = "NOME")
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "DESCRICAO")
+	@Column(name = "descricao")
 	private String descricao;
 	
 	public Permissao() {
